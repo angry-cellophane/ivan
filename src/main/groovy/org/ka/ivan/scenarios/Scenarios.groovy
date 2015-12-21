@@ -1,7 +1,10 @@
 package org.ka.ivan.scenarios
 
-/**
- * Created by Александр on 22.12.2015.
- */
 class Scenarios {
+
+    final def scenarios = []
+
+    def scenario(String name, Closure c) {
+        scenarios.add([name, c])
+    }
 }

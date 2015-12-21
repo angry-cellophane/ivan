@@ -76,7 +76,7 @@ class RegressionTest {
                 actions.with beforeTest
             }
             println "do test $name"
-            c()
+            actions.with c
             if (afterTest) {
                 actions.with afterTest
             }
