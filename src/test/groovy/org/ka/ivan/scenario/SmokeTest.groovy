@@ -8,24 +8,43 @@ class SmokeTest {
 
     @Test
     void test() {
-//        def date = getDateFromDatabase()
+        def databases = [
+                'default': 'Sybase',
+                'Oracle': 'Oracle'
+        ]
 
-        def test = new RegressionTest()
+        def test = new RegressionTest(databases)
+
         test.inputs {
-            file "\$AppData/input/input${it}.csv" fromFixture "\$Fixtures/myApp/input${it}.csv"
+            file '$AppData/input/input.csv' fromFixture 'Fixtures/myApp/input.csv'
+            table 'MyDatabase..MyTable' fromFixture 'MyFixtureDatabase..MyTable'
         }
         test.outputs {
-            file '$APPData/output/output.csv'
+            file '$AppData/output/output.csv'
         }
-        def a = 1
-        test.oldTest {
-            println "do oldTest"
-            println "oldTest: a = $a"
-//            copy file '/source/file' to '/dest/file'
+        test.scenarios {
+            scenario('oldTest') {
+                println "doing oldTest"
+//                copy file '/source/file' to '/dest/file'
+            }
+
+            scenario('newTest') {
+                println "doing newTest"
+            }
         }
-        test.newTest {
-            println "do newTest"
+        test.beforeTest {
+            removeFile '~/tmp/*'
+            truncateTable 'MyTable..TableName'
         }
+        test.afterTestSuit {
+            ftp ('user@host.com:/path/to/dir/') {
+                cd 'some/dir'
+                put 'myFile.txt'
+                get 'myFile.txt'
+            }
+        }
+
+
         test.execute()
 
 //        def builder = new NodeBuilder()
