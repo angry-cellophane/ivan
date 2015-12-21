@@ -1,4 +1,4 @@
-package org.ka.ivan.adapter
+package org.ka.ivan.server
 
 class Server {
 
