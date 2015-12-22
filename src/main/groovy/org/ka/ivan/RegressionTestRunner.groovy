@@ -80,11 +80,13 @@ class RegressionTestRunner {
             if (afterTest) {
                 actions.with afterTest
             }
+
         }
 
 
         println 'checking outputs'
-//        outputsChecker.check()W
+        outputsChecker.check()
+
         if (afterTestSuit) {
             actions.with afterTestSuit
         }

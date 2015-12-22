@@ -48,43 +48,5 @@ class SmokeTest {
 
 
         test.execute()
-
-//        def builder = new NodeBuilder()
-//        builder.test {
-//            loadFixtures() {
-//                file "\$DATA/MyApp/$date/input_data.csv" fromFixture "\$DATA/fixtures/MyTest/input_data.csv"
-//                database 'Oracle' table 'MySchema.MyTable' fromFixture 'FixtureSchema.MyTable'
-//                table 'MyDB..MyTable2' fromFixture 'FixtureDb..MyTable2'
-//                file "\$DATA/MyApp/$date/scp_file.csv" scpFixtureFrom "user@yet-another-serer.com:/path/to/fixture/file.csv"
-//                file "\$DATA/MyApp/$date/input_data.csv" foreachTest [
-//                        oldTest : fromFixture '',
-//                        newTest : fromFixture ''
-//                ]
-//            }
-//            beforeTestSuit() {
-//
-//            }
-//            beforeTest() {
-//
-//            }
-//            oldTest() {
-//                execute script '/path/to/old/script'
-//            }
-//            newTest() {
-//                execute script '/path/to/new/script'
-//            }
-//            afterTest() {
-//
-//            }
-//            afterTestSuit() {
-//
-//            }
-//            outputs() {
-//                file "\$DATA/MyApp/$date/output_data.csv"
-//                table 'MyDB..OutputTable'
-//            }
-//        }
-
-
     }
 }
