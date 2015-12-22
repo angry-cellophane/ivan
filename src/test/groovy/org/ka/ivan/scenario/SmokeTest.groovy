@@ -18,6 +18,7 @@ class SmokeTest {
         test.loadFixtures {
             file '$AppData/input/input.csv' fromFixture 'Fixtures/myApp/input.csv'
             table 'MyDatabase..MyTable' fromFixture 'MyFixtureDatabase..MyTable'
+            database 'Oracle' table 'MySchema.MyTable' fromFixture 'MyFixtureSchema.MyTable'
         }
         test.outputs {
             file '$AppData/output/output.csv'
