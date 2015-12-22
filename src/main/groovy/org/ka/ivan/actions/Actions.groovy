@@ -8,21 +8,21 @@ class Actions {
         }]
     }
 
-    def getRemove() {
-        [file: {String fileName ->
-            println "remove file $fileName"
-        }]
+    def removeFile(String fileName) {
+        println "remove file $fileName"
     }
 
-    def getTruncate() {
-        [table: {String tableName ->
-            println "truncate table $tableName"
-        }]
+    def truncateTable(String tableName) {
+        println "truncate table $tableName"
     }
 
     def ftp (String url, Closure c) {
         println "ftp to $url"
         def ftp = new Ftp(url)
         ftp.with c
+    }
+
+    def propertyMissing(String name) {
+        return null
     }
 }

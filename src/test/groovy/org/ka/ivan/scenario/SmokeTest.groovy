@@ -33,8 +33,8 @@ class SmokeTest {
             }
         }
         test.beforeTest {
-//            remove file '~/tmp/*'
-//            truncate table 'MyTable..TableName'
+            removeFile '~/tmp/*'
+            truncateTable 'MyTable..TableName'
         }
         test.afterTestSuit {
             ftp ('user@host.com:/path/to/dir/') {
