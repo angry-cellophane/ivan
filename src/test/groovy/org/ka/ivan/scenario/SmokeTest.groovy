@@ -15,7 +15,7 @@ class SmokeTest {
 
         def test = new RegressionTest(databases)
 
-        test.inputs {
+        test.loadFixtures {
             file '$AppData/input/input.csv' fromFixture 'Fixtures/myApp/input.csv'
             table 'MyDatabase..MyTable' fromFixture 'MyFixtureDatabase..MyTable'
         }
@@ -50,7 +50,7 @@ class SmokeTest {
 
 //        def builder = new NodeBuilder()
 //        builder.test {
-//            inputs() {
+//            loadFixtures() {
 //                file "\$DATA/MyApp/$date/input_data.csv" fromFixture "\$DATA/fixtures/MyTest/input_data.csv"
 //                database 'Oracle' table 'MySchema.MyTable' fromFixture 'FixtureSchema.MyTable'
 //                table 'MyDB..MyTable2' fromFixture 'FixtureDb..MyTable2'
