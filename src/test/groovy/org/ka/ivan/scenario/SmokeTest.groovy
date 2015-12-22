@@ -24,6 +24,7 @@ class SmokeTest {
         }
         test.scenarios {
             scenario('oldTest') {
+                copy '~/tmp/myFile.csv' to '~/tmp/myNewFile.csv'
                 println "doing oldTest"
 //                copy file '/source/file' to '/dest/file'
             }
