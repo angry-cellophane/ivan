@@ -4,27 +4,27 @@ import org.ka.ivan.actions.Actions
 import org.ka.ivan.inputs.Inputs
 import org.ka.ivan.outputs.Outputs
 import org.ka.ivan.outputs.OutputsChecker
-import org.ka.ivan.scenarios.Scenarios
+import org.ka.ivan.scenarios.RegressionTests
 
-class RegressionTest {
+class RegressionTestRunner {
 
     private Closure inputs
     private OutputsChecker outputsChecker
 
     private final Map<String, String> databases
 
-    private final Scenarios scenarios
+    private final RegressionTests scenarios
 
     private Closure beforeTestSuit
     private Closure afterTestSuit
     private Closure beforeTest
     private Closure afterTest
 
-    RegressionTest(Map<String, String> databases) {
+    RegressionTestRunner(Map<String, String> databases) {
         this.databases = databases
         assert 'default' in this.databases
 
-        scenarios = new Scenarios()
+        scenarios = new RegressionTests()
     }
 
     def loadFixtures(Closure c) {
@@ -38,7 +38,7 @@ class RegressionTest {
         this.outputsChecker = new OutputsChecker(outputs: outputs)
     }
 
-    def scenarios(Closure c) {
+    def regressionTests(Closure c) {
         scenarios.with c
     }
 
@@ -71,7 +71,7 @@ class RegressionTest {
         def beforeTest = beforeTest
         def afterTest = afterTest
 
-        scenarios.scenarios.each { name, c ->
+        scenarios.tests.each { name, c ->
             if (beforeTest) {
                 actions.with beforeTest
             }

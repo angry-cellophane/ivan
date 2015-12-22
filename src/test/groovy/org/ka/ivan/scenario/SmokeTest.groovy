@@ -1,7 +1,7 @@
 package org.ka.ivan.scenario
 
 import org.junit.Test
-import org.ka.ivan.RegressionTest
+import org.ka.ivan.RegressionTestRunner
 
 
 class SmokeTest {
@@ -13,7 +13,7 @@ class SmokeTest {
                 'Oracle': 'Oracle'
         ]
 
-        def test = new RegressionTest(databases)
+        def test = new RegressionTestRunner(databases)
 
         test.loadFixtures {
             file '$AppData/input/input.csv' fromFixture 'Fixtures/myApp/input.csv'
@@ -23,14 +23,14 @@ class SmokeTest {
         test.outputs {
             file '$AppData/output/output.csv'
         }
-        test.scenarios {
-            scenario('oldTest') {
+        test.regressionTests {
+            regressionTest('oldTest') {
                 copy '~/tmp/myFile.csv' to '~/tmp/myNewFile.csv'
                 println "doing oldTest"
 //                copy file '/source/file' to '/dest/file'
             }
 
-            scenario('newTest') {
+            regressionTest('newTest') {
                 println "doing newTest"
             }
         }
