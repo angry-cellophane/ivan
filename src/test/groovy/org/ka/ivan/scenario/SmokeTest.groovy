@@ -25,9 +25,12 @@ class SmokeTest {
         }
         test.regressionTests {
             regressionTest('oldTest') {
-                copy '~/tmp/myFile.csv' to '~/tmp/myNewFile.csv'
                 println "doing oldTest"
-//                copy file '/source/file' to '/dest/file'
+                cd '/source'
+                cp './file' '/dest/folder'
+                cp '-r' './folder' '/dest/folder'
+                run '$SCRIPTS_HOME/script1'
+                rm '-rf' '~/tmp1'
             }
 
             regressionTest('newTest') {
