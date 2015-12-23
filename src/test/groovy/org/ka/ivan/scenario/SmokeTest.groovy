@@ -15,6 +15,9 @@ class SmokeTest {
 
         def test = new RegressionTestRunner(databases)
 
+        test.configs {
+            tempDir = '~/tmp'
+        }
         test.inputs {
             file '$AppData/input/input.csv' copyOf 'Fixtures/myApp/input.csv'
             table 'MyDatabase..MyTable' copyOf 'MyFixtureDatabase..MyTable'

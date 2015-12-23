@@ -8,6 +8,7 @@ import org.ka.ivan.scenarios.RegressionTests
 
 class RegressionTestRunner {
 
+    private final Configs configs
     private Closure inputs
     private OutputsChecker outputsChecker
 
@@ -25,6 +26,11 @@ class RegressionTestRunner {
         assert 'default' in this.databases
 
         scenarios = new RegressionTests()
+        configs = new Configs()
+    }
+
+    def configs(Closure c) {
+        configs.with c
     }
 
     def inputs(Closure c) {
