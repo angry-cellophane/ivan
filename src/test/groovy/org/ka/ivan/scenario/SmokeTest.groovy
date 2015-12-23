@@ -33,6 +33,11 @@ class SmokeTest {
                 run '$SCRIPTS_HOME/script1'
                 rm '-rf' '~/tmp1'
                 bcpin 'file':'~/tmp', 'query':'select * from MyTable'
+                database 'Sybase' request 'select * from DB..Persons' forEachRow { row ->
+                    println "id: ${row['id']}, name: ${row['name']}, surname: ${row['surname']}"
+                }
+
+                database 'Sybase' request 'select * from DB..Mytable' into '~/tmp/dump'
             }
 
             regressionTest('newTest') {
