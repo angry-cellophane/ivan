@@ -16,10 +16,10 @@ class RegressionTestRunner {
 
     private final RegressionTests scenarios
 
-    private Closure beforeTestSuit
-    private Closure afterTestSuit
-    private Closure beforeTest
-    private Closure afterTest
+    private Closure beforeTestRuns
+    private Closure afterTestRuns
+    private Closure beforeTestRun
+    private Closure afterTestRun
 
     RegressionTestRunner(Map<String, String> databases) {
         this.databases = databases
@@ -48,34 +48,34 @@ class RegressionTestRunner {
         scenarios.with c
     }
 
-    def beforeTestSuit(Closure c) {
-        beforeTestSuit = c
+    def beforeTestRuns(Closure c) {
+        beforeTestRuns = c
     }
 
-    def afterTestSuit(Closure c) {
-        afterTestSuit = c
+    def afterTestRuns(Closure c) {
+        afterTestRuns = c
     }
 
-    def beforeTest(Closure c) {
-        beforeTest = c
+    def beforeTestRun(Closure c) {
+        beforeTestRun = c
     }
 
-    def afterTest(Closure c) {
-        afterTest = c
+    def afterTestRun(Closure c) {
+        afterTestRun = c
     }
 
     def execute() {
         def actions = new Actions()
 
-        if (beforeTestSuit) {
-            actions.with beforeTestSuit
+        if (beforeTestRuns) {
+            actions.with beforeTestRuns
         }
 
         println 'inputs'
         inputs()
 
-        def beforeTest = beforeTest
-        def afterTest = afterTest
+        def beforeTest = beforeTestRun
+        def afterTest = afterTestRun
 
         scenarios.tests.each { name, c ->
             if (beforeTest) {
@@ -93,8 +93,8 @@ class RegressionTestRunner {
         println 'checking outputs'
 //        outputsChecker.check()
 
-        if (afterTestSuit) {
-            actions.with afterTestSuit
+        if (afterTestRuns) {
+            actions.with afterTestRuns
         }
     }
 }

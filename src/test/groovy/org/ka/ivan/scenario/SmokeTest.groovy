@@ -48,11 +48,11 @@ class SmokeTest {
                 drop table 'MyDatabase..MyTable'
             }
         }
-        test.beforeTest {
+        test.beforeTestRun {
             remove file '~/tmp/*'
             truncate table 'MyTable..TableName'
         }
-        test.afterTestSuit {
+        test.afterTestRuns {
             ftp ('user@host.com:/path/to/dir/') {
                 cd 'some/dir'
                 put 'myFile.txt'
