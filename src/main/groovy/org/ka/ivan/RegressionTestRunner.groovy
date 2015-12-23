@@ -44,7 +44,7 @@ class RegressionTestRunner {
         this.outputsChecker = new OutputsChecker(outputs: outputs)
     }
 
-    def regressionTests(Closure c) {
+    def testRuns(Closure c) {
         scenarios.with c
     }
 

@@ -27,8 +27,8 @@ class SmokeTest {
         test.outputs {
             file '$AppData/output/output.csv'
         }
-        test.regressionTests {
-            regressionTest('oldTest') {
+        test.testRuns {
+            testRun('run version 0.1') {
                 println "doing oldTest"
                 cd '/source'
                 cp './file' '/dest/folder'
@@ -43,7 +43,7 @@ class SmokeTest {
                 database 'Sybase' request 'select * from DB..Mytable' into '~/tmp/dump'
             }
 
-            regressionTest('newTest') {
+            testRun('run version 0.2') {
                 println "doing newTest"
                 drop table 'MyDatabase..MyTable'
             }
