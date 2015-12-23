@@ -11,7 +11,7 @@ class Inputs {
     }
 
     def file(String fileName) {
-        [fromFixture: { String fixtureFileName ->
+        [copyOf: { String fixtureFileName ->
             println "copy $fileName from $fixtureFileName"
         }]
     }
@@ -23,7 +23,7 @@ class Inputs {
     }
 
     private def _table(String databaseName, String tableName) {
-        [fromFixture: { String fixtureTableName ->
+        [copyOf: { String fixtureTableName ->
             println "copy data from table $fixtureTableName to $tableName in $databaseName"
         }]
     }

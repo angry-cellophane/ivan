@@ -1,6 +1,6 @@
 package org.ka.ivan.actions
 
-class Actions {
+class Actions implements Sql, Bcpin {
 
     private final def chainOperators = [
             'file',
