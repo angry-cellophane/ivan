@@ -27,7 +27,7 @@ class RegressionTestRunner {
         scenarios = new RegressionTests()
     }
 
-    def loadFixtures(Closure c) {
+    def inputs(Closure c) {
         def inp = new Inputs(databases)
         inputs = {inp.with c}
     }
@@ -65,7 +65,7 @@ class RegressionTestRunner {
             actions.with beforeTestSuit
         }
 
-        println 'loadFixtures'
+        println 'inputs'
         inputs()
 
         def beforeTest = beforeTest

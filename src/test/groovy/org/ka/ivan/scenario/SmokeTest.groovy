@@ -15,7 +15,7 @@ class SmokeTest {
 
         def test = new RegressionTestRunner(databases)
 
-        test.loadFixtures {
+        test.inputs {
             file '$AppData/input/input.csv' fromFixture 'Fixtures/myApp/input.csv'
             table 'MyDatabase..MyTable' fromFixture 'MyFixtureDatabase..MyTable'
             database 'Oracle' table 'MySchema.MyTable' fromFixture 'MyFixtureSchema.MyTable'
